@@ -1,12 +1,13 @@
 using UnityEngine;
 using TMPro;
+using Tools;
 
 public class UpdatePoint : MonoBehaviour
 {
     [SerializeField] private int collectableId;
     private int _score;
     private TextMeshProUGUI _txtScore;
-    private enum scoreType
+    private enum ScoreType
     {
         Increase,
         Decrease,
@@ -22,14 +23,18 @@ public class UpdatePoint : MonoBehaviour
     {
         switch (triggerId)
         {
-            case (int)scoreType.Increase: _score += 1;
+            case (int)ScoreType.Increase: _score += 1;
                 break;
-            case (int)scoreType.Decrease: _score -= 1;
+            case (int)ScoreType.Decrease: _score -= 1;
                 break;
-            case (int)scoreType.X4: _score *= 10;
+            case (int)ScoreType.X4: _score *= 4;
+                break;
+            default:
+                CustomTools.Log($"Unexpected triggerId: {triggerId}", CustomTools.LogColor.Red);
                 break;
         }
 
+        CustomTools.Log(_score,CustomTools.LogColor.Yellow);
         _txtScore.text = _score.ToString();
     }
 

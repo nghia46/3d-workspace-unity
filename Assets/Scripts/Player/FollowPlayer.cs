@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    private Transform playerCameraPos;
+    private Transform _playerCameraPos;
     void Update()
     {
-        playerCameraPos = GameObject.FindWithTag("PlayerCamera").transform;
-        this.transform.position = playerCameraPos.position;
+        _playerCameraPos = GameObject.FindWithTag("PlayerCamera").transform;
+        this.transform.position = _playerCameraPos.position;
     }
 }
