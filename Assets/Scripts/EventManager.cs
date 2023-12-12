@@ -1,13 +1,10 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
 using UnityEngine;
 
 public class EventManager : MonoBehaviour
 {
     public static EventManager Instance;
-    public event Action<bool> CollectableEvent;
+    public event Action<int> CollectableEvent;
 
     private void Awake()
     {
@@ -21,11 +18,11 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public void StartCollectableCollectEvent(bool isTrue)
+    public void StartCollectableCollectEvent(int id)
     {
         if (CollectableEvent != null)
         {
-            CollectableEvent.Invoke(isTrue);
+            CollectableEvent.Invoke(id);
         }
         else
         {

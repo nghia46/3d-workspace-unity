@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private bool _isGrounded;
     private const float Gravity = -18.32f;
     private Vector3 _velocity;
-    private const float GroundDistance = .1f;
+    private const float GroundDistance = .2f;
 
     private void Awake()
     {

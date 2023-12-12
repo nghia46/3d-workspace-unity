@@ -1,31 +1,34 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    private AudioSource _eventSound;
-    [SerializeField] private AudioClip[] sounds;
-    private void Awake()
+    [SerializeField] private AudioSource[] sounds;
+    private enum SoundType
     {
-        _eventSound = GetComponent<AudioSource>();
+        Increase,
+        Decrease,
+        Health
     }
-
     private void Start()
     {
-       // EventManager.Instance.CollectableEvent += PlayOrbSound;
+        EventManager.Instance.CollectableEvent += PlayOrbSound;
     }
 
-    private void PlayOrbSound()
+    private void PlayOrbSound(int triggerId)
     {
-        _eventSound.resource = sounds[0];
-        _eventSound.Play();
+        switch (triggerId)
+        {
+            case 0: sounds[(int)SoundType.Increase].Play();
+                break;
+            case 1: sounds[(int)SoundType.Decrease].Play();
+                break;
+            case 2: sounds[(int)SoundType.Health].Play();
+                break;
+        }
     }
 
     private void OnDisable()
     {
-        //EventManager.Instance.CollectableEvent -= PlayOrbSound;
+        EventManager.Instance.CollectableEvent -= PlayOrbSound;
     }
 }

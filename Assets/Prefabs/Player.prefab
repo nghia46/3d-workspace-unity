@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7820694089506710079}
   - component: {fileID: 6195174979272252309}
   m_Layer: 0
-  m_Name: Obj
+  m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5ff29f480f569eb4d9c3cfea62624d29, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -218,8 +218,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundMask:
     serializedVersion: 2
-    m_Bits: 0
-  speed: 3.9
+    m_Bits: 8
+  speed: 15
   jumpHeight: 2
 --- !u!1 &5888154429019482066
 GameObject:
