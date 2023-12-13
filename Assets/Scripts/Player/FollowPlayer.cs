@@ -1,11 +1,21 @@
 using UnityEngine;
 
-public class FollowPlayer : MonoBehaviour
+namespace Player
 {
-    private Transform _playerCameraPos;
-    void Update()
+    public class FollowPlayer : MonoBehaviour
     {
-        _playerCameraPos = GameObject.FindWithTag("PlayerCamera").transform;
-        this.transform.position = _playerCameraPos.position;
+        private Transform _playerCameraPos;
+        private GameObject _gameObject;
+
+        private void Awake()
+        {
+            _gameObject = GameObject.FindWithTag("PlayerCamera");
+        }
+
+        void Update()
+        {
+            _playerCameraPos = _gameObject.transform;
+            this.transform.position = _playerCameraPos.position;
+        }
     }
 }

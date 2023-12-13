@@ -15,7 +15,9 @@ namespace Tools
         public static void Log<T>(T logMessage, LogColor? color = null)
         {
             var colorCode = color?.ToString().ToLower() ?? LogColor.White.ToString().ToLower();
-            Debug.Log($"<color={colorCode}>{logMessage}</color>");
+            Debug.Log(string.IsNullOrWhiteSpace(logMessage.ToString())
+                ? $"<color=red>You log is empty</color>"
+                : $"<color={colorCode}>{logMessage}</color>");
         }
     }
 }
