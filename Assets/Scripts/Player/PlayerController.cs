@@ -1,9 +1,6 @@
-using System;
 using EventSystem;
 using Tools;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Player
 {
@@ -55,5 +52,11 @@ namespace Player
             transform.rotation = Quaternion.Euler(0, transform.GetChild(1).rotation.eulerAngles.y, 0);
             _controller.Move(_velocity * Time.deltaTime);
         }
+
+        public void SayHello()
+        {
+            CustomTools.Log("Hello",CustomTools.LogColor.Yellow);
+        }
+        
     }
 }

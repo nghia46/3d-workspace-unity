@@ -1,32 +1,35 @@
 using System;
 using UnityEngine;
 
-public class EventManager : MonoBehaviour
+namespace EventSystem
 {
-    public static EventManager Instance;
-    public event Action<int> CollectableEvent;
-
-    private void Awake()
+    public class EventManager : MonoBehaviour
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+        public static EventManager Instance;
+        public event Action<int> CollectableEvent;
 
-    public void StartCollectableCollectEvent(int id)
-    {
-        if (CollectableEvent != null)
+        private void Awake()
         {
-            CollectableEvent.Invoke(id);
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
-        else
+
+        public void StartCollectableCollectEvent(int id)
         {
-            Debug.LogWarning($"No event in CollectableEvent");
+            if (CollectableEvent != null)
+            {
+                CollectableEvent.Invoke(id);
+            }
+            else
+            {
+                Debug.LogWarning($"No event in CollectableEvent");
+            }
         }
     }
 }

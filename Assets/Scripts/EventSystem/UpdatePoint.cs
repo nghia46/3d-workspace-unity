@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using Tools;
 using UnityEngine;
@@ -16,9 +17,15 @@ namespace EventSystem
             Decrease,
             X4
         }
-        private void Start()
+
+        private void Awake()
         {
             _txtScore = GetComponent<TextMeshProUGUI>();
+        }
+
+        private void Start()
+        {
+            _txtScore.text = $"<color=Yellow>Score</color>: {score}";
             EventManager.Instance.CollectableEvent += UpdateScore;
         }
     
@@ -38,7 +45,7 @@ namespace EventSystem
             }
 
             CustomTools.Log(score,CustomTools.LogColor.Yellow);
-            _txtScore.text = score.ToString();
+            _txtScore.text = $"<color=Yellow>Score</color>: {score}";
         }
 
         private void OnDisable()
