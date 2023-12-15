@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7674266133960813871}
   - component: {fileID: -723065510297820321}
   m_Layer: 0
-  m_Name: YellowOrb
+  m_Name: GreenOrbs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +132,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5420767450597458790}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}

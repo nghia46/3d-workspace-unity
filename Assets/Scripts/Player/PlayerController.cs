@@ -1,7 +1,7 @@
 using EventSystem;
 using Tools;
+using Unity.Collections;
 using UnityEngine;
-
 namespace Player
 {
     public class PlayerController : MonoBehaviour
@@ -13,7 +13,7 @@ namespace Player
         [SerializeField] [Range(1, 10)] private float jumpHeight = 2f;
         [SerializeField] private float gravity;
         [SerializeField] private float groundDistance = .2f;
-        [ReadOnly][SerializeField] private int score;
+        [ReadOnly] [SerializeField] private int score;
         private CharacterController _controller;
         private Transform _groundCheck;
         private bool _isGrounded;
@@ -27,7 +27,7 @@ namespace Player
 
         private void FixedUpdate()
         {
-            score = FindAnyObjectByType<UpdatePoint>().score;
+            score = FindAnyObjectByType<UpdatePoint>().Score;
         }
 
         void Update()
