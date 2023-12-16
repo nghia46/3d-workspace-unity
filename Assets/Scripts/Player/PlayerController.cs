@@ -27,7 +27,7 @@ namespace Player
 
         private void FixedUpdate()
         {
-            score = FindAnyObjectByType<UpdatePoint>().Score;
+            score = FindAnyObjectByType<UpdatePoint>().score;
         }
 
         void Update()

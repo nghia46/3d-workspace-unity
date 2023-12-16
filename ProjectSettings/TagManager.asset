@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerCamera
   - GunPos
+  - GarbagePool
   layers:
   - Default
   - TransparentFX
