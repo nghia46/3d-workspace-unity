@@ -7,6 +7,7 @@ namespace EventSystem
     {
         public static EventManager Instance;
         public event Action<int> CollectableEvent;
+        public event Action FireEvent; 
 
         private void Awake()
         {
@@ -30,6 +31,11 @@ namespace EventSystem
             {
                 Debug.LogWarning($"No event in CollectableEvent");
             }
+        }
+
+        public void StartFireEvent()
+        {
+            FireEvent?.Invoke();
         }
     }
 }

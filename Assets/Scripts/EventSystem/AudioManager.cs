@@ -8,13 +8,19 @@ public class AudioManager : MonoBehaviour
     {
         Increase,
         Decrease,
-        Health
+        Health,
+        Fire
     }
     private void Start()
     {
         EventManager.Instance.CollectableEvent += PlayOrbSound;
+        EventManager.Instance.FireEvent += PlayFireSound;
     }
 
+    private void PlayFireSound()
+    {
+        sounds[(int)SoundType.Fire].Play();
+    }
     private void PlayOrbSound(int triggerId)
     {
         switch (triggerId)

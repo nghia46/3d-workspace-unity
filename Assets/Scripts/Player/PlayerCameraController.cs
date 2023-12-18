@@ -1,33 +1,43 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using Input;
 using UnityEngine;
-using UnityEngine.Tilemaps;
+using UnityEngine.InputSystem;
 
-public class PlayerCameraController : MonoBehaviour
+namespace Player
 {
-    [SerializeField][Range(0.1f,10)] private float sensitivity = 2f;
-    private Vector2 _rotation;
-    
-    private Transform _playerOrientation;
-    private void Awake()
+    public class PlayerCameraController : MonoBehaviour
     {
-        _playerOrientation = GameObject.FindGameObjectWithTag("Player").transform.GetChild(1);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
+        [SerializeField] private InputReader input;
+        [SerializeField] [Range(0.1f, 20)] private float sensitivity = 2f;
+        private Vector2 _rotation;
+        private Vector2 _mouseDir;
+        private Transform _playerOrientation;
 
-    void Update()
-    {
-        var mouseX = Input.GetAxisRaw("Mouse X");
-        var mouseY = Input.GetAxisRaw("Mouse Y");
+        private void Awake()
+        {
+            _playerOrientation = GameObject.FindGameObjectWithTag("Player").transform.GetChild(1);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
+        private void Start()
+        {
+            input.MouseEvent += HandleMouse;
+        }
+
+        private void HandleMouse(Vector2 obj)
+        {
+            _mouseDir = obj;
+        }
+
+        private void Update()
+        {
+            var mousePos = _mouseDir * (Time.deltaTime * sensitivity);
+            _rotation.y += mousePos.x;
+            _rotation.x -= mousePos.y;
+            _rotation.x = Mathf.Clamp(_rotation.x, -90, 90);
         
-        var mousePos = new Vector2(mouseX, mouseY) * (Time.deltaTime * (sensitivity*100));
-        _rotation.y += mousePos.x;
-        _rotation.x -= mousePos.y;
-        _rotation.x = Mathf.Clamp(_rotation.x, -90, 90);
-
-        transform.rotation = Quaternion.Euler(_rotation.x,_rotation.y,0);
-        _playerOrientation.rotation = Quaternion.Euler(0, _rotation.y, 0);
+            transform.rotation = Quaternion.Euler(_rotation.x, _rotation.y, 0);
+            _playerOrientation.rotation = Quaternion.Euler(0, _rotation.y, 0);
+        }
     }
 }
