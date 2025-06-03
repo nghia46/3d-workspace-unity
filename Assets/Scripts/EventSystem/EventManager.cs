@@ -7,7 +7,7 @@ namespace EventSystem
     {
         public static EventManager Instance;
         public event Action<int> CollectableEvent;
-        public event Action FireEvent; 
+        public event Action FireEvent;
 
         private void Awake()
         {

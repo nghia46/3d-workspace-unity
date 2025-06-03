@@ -15,7 +15,7 @@ namespace Player
         void Update()
         {
             _playerCameraPos = _gameObject.transform;
-            this.transform.position = _playerCameraPos.position;
+            transform.position = _playerCameraPos.position;
         }
     }
 }
